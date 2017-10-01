@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+<title>Binary Counter</title>
+<style>
+body{
+	background-color: black;
+	font-family: "Courier New";
+}
+#title{
+	font-size: 22px;
+	color: #00FF21;
+	margin: 30px;
+}
+.clock{
+	padding: 30px;
+	border: 4px solid #00FF21;
+	border-radius: 10px;
+	margin: 30px;
+	width: 550px;
+
+	font-size: 48px;
+
+	color: #00FF21;
+}
+#display{
+	margin: 30px;
+	font-size: 30px;
+	color: white;
+}
+</style>
+<script type="application/javascript">
+var counter = new Array();
+	counter[0] = "0";
+	counter[1] = "0";
+	counter[2] = "0";
+	counter[3] = "0";
+	counter[4] = "0";
+	counter[5] = "0";
+	counter[6] = "0";
+	counter[7] = "0";
+
+var num = 0;
+
+setInterval(function(){automation()}, 1000);
+
+function automation()
+{
+	var ptr = 0;
+
+	//run the entire array
+	while(1)
+	{
+		if(counter[ptr] == "1")
+		{
+			counter[ptr] = "0";
+			ptr = ptr+1;
+		}
+		else
+		{
+			counter[ptr] = "1";
+			ptr = 0;
+			break;
+		}
+	}
+
+	updateSquares();
+}
+
+function updateSquares()
+{
+		if(counter[7] == "1")
+			document.getElementById("s_eight").src = "binary_on.png";
+		else
+			document.getElementById("s_eight").src = "binary_off.png";
+
+		if(counter[6] == "1")
+			document.getElementById("s_seven").src = "binary_on.png";
+		else
+			document.getElementById("s_seven").src = "binary_off.png";
+
+		if(counter[5] == "1")
+			document.getElementById("s_six").src = "binary_on.png";
+		else
+			document.getElementById("s_six").src = "binary_off.png";
+
+		if(counter[4] == "1")
+			document.getElementById("s_five").src = "binary_on.png";
+		else
+			document.getElementById("s_five").src = "binary_off.png";
+
+		if(counter[3] == "1")
+			document.getElementById("s_four").src = "binary_on.png";
+		else
+			document.getElementById("s_four").src = "binary_off.png";
+
+		if(counter[2] == "1")
+			document.getElementById("s_three").src = "binary_on.png";
+		else
+			document.getElementById("s_three").src = "binary_off.png";
+
+		if(counter[1] == "1")
+			document.getElementById("s_two").src = "binary_on.png";
+		else
+			document.getElementById("s_two").src = "binary_off.png";
+
+		if(counter[0] == "1")
+			document.getElementById("s_one").src = "binary_on.png";
+		else
+			document.getElementById("s_one").src = "binary_off.png";
+
+
+		num++;
+		if(num<256)
+			document.getElementById("display").innerHTML = num;
+		else
+			num = 0; //reset counter
+}
+</script>
+</head>
+
+<body>
+<div id="title">Binary Counter</div>
+<div class="clock">
+	<img id="s_eight" src="binary_off.png"/>
+	<img id="s_seven" src="binary_off.png"/>
+	<img id="s_six" src="binary_off.png"/>
+	<img id="s_five" src="binary_off.png"/>
+	<img id="s_four" src="binary_off.png"/>
+	<img id="s_three" src="binary_off.png"/>
+	<img id="s_two" src="binary_off.png"/>
+	<img id="s_one" src="binary_off.png"/>
+</div>
+</br>
+<div id="display">0</div>
+</body>
+</html>
